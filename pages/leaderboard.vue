@@ -30,14 +30,14 @@
 
             <tbody>
               <tr
-                v-for="user in userData"
+                v-for="(user, index) in userData"
                 :key="user.name"
                 class="lb__rankingTable__row"
               >
                 <td
                   class="lb__rankingTable__column lb__rankingTable__column--rank"
                 >
-                  #{{ user.leaderBoardPos }}
+                  {{ index + 1 }}
                 </td>
                 <td class="lb__rankingTable__column">
                   <div class="lb__user">{{ user.username }}</div>
