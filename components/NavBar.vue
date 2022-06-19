@@ -66,7 +66,7 @@
 
             <div class="login-container">
               <div id="modal__popup" class="login-popup">
-                <div class="close__popup-btn">&times;</div>
+                <div class="close__popup-btn">✖</div>
 
                 <div class="user-form">
                   <h2 v-if="!loginSatus" id="sign-in" class="user-sign-in">
@@ -156,6 +156,7 @@ export default {
       loginSatus: this.$store.state.auth.loggedIn,
       newUser: this.$auth.loggedIn,
       userdata: this.$auth.user,
+      username: this.$auth.user.nickname,
       reapeat: 1,
     };
   },
@@ -202,29 +203,39 @@ export default {
           document.querySelector('.login-popup').classList.remove('active');
         });
 
-      const animateNav = () => {
-        const navBurger = document.querySelector('.uso__navburger');
-        const navLinks = document.querySelector('.uso__navbar--links');
-        const navbarLinks = document.querySelectorAll('.uso__navbar--links li');
+      const modal = document.getElementById('modal__popup');
 
-        navBurger.addEventListener('click', () => {
-          navLinks.classList.toggle('nav-active');
-
-          navbarLinks.forEach((link, index) => {
-            if (link.style.animation) {
-              link.style.animation = '';
-            } else {
-              link.style.animation = `navLinkFade 0.5s ease forwards ${
-                index / 7 + 1.5
-              }s`;
-            }
-          });
-
-          navBurger.classList.toggle('toggle');
-        });
+      window.onclick = (event) => {
+        if (event.target === modal) {
+          document.querySelector('.login-popup').classList.remove('active');
+        }
       };
 
-      animateNav();
+      console.log(event);
+
+      // const animateNav = () => {
+      //   const navBurger = document.querySelector('.uso__navburger');
+      //   const navLinks = document.querySelector('.uso__navbar--links');
+      //   const navbarLinks = document.querySelectorAll('.uso__navbar--links li');
+
+      //   navBurger.addEventListener('click', () => {
+      //     navLinks.classList.toggle('nav-active');
+
+      //     navbarLinks.forEach((link, index) => {
+      //       if (link.style.animation) {
+      //         link.style.animation = '';
+      //       } else {
+      //         link.style.animation = `navLinkFade 0.5s ease forwards ${
+      //           index / 7 + 1.5
+      //         }s`;
+      //       }
+      //     });
+
+      //     navBurger.classList.toggle('toggle');
+      //   });
+      // };
+
+      // animateNav();
     }
   },
 
@@ -426,7 +437,7 @@ export default {
   justify-content: center;
   align-items: center;
   height: 6.25rem;
-  padding: 0 25%;
+  padding: 0 22.5%;
 }
 
 /* Navigation Leftside [logo, links] */
@@ -481,7 +492,7 @@ export default {
 }
 
 .uso__navbar--links li {
-  padding: 0 1.5rem;
+  padding: 0 2rem;
   list-style: none;
 }
 
@@ -697,18 +708,29 @@ export default {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 17px;
-  height: 17px;
+  width: 20px;
+  height: 20px;
   background: #888;
   color: #eee;
   text-align: center;
   line-height: 20px;
   border-radius: 20px;
   cursor: pointer;
-  font-size: 23px;
+  font-size: 12px;
+  padding: 0.2rem 0rem 0rem 0rem;
   font-weight: bold;
   cursor: url('~/assets/images/cursor/paimonCursor4.png'), auto;
   z-index: 420;
+  transition: 250ms;
+}
+
+.login-popup .close__popup-btn:hover {
+  background: #fff;
+  color: #888;
+}
+
+.login-popup .close__popup-btn:active {
+  transform: scale(0.8);
 }
 
 .login-popup .user-sign-in {
