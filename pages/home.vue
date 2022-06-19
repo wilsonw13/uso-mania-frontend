@@ -189,7 +189,7 @@ export default {
 }
 
 .hello__user {
-  font-size: 15rem;
+  font-size: 13rem;
   font-weight: 400;
   text-shadow: 4px 4px 5px #212272;
   position: absolute;
