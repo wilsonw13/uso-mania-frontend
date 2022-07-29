@@ -76,7 +76,7 @@
                     hello there!
                   </h2>
 
-                  <div id="form__sign-in" class="form-element">
+                  <div id="form__sign-in" class="form-element" @click="remove">
                     <nuxt-link id="btnId" to="/profile">
                       <button
                         v-if="loginSatus"
@@ -88,7 +88,7 @@
                     </nuxt-link>
                   </div>
 
-                  <div id="form__sign-in" class="form-element">
+                  <div id="form__sign-in" class="form-element" @click="remove">
                     <nuxt-link id="btnId" to="/settings">
                       <button
                         v-if="loginSatus"
@@ -298,6 +298,11 @@ export default {
     async logout() {
       await this.$auth.logout();
     },
+    remove() {
+        const x = document.querySelector('.login-popup')
+        x.classList.remove('active');
+      
+    }
   },
 };
 </script>

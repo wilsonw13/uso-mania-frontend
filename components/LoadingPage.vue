@@ -20,7 +20,7 @@
 window.onload = () => {
     setTimeout(() => {
     document.querySelector("body").classList.add("display");
-    }, 15000);
+    }, 10000);
 };
 
 </script>
@@ -33,13 +33,14 @@ window.onload = () => {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: url(@/assets/images/backgrounds/enkanomiya-blurred.jpg) no-repeat center center fixed;
+    background: url(@/assets/images/backgrounds/landing-page-background-inazuma.jpg) no-repeat center center fixed;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 1s;
     z-index: 300;
+    overflow: hidden !important;
   }
   
   .display .spinner-container {
@@ -53,7 +54,7 @@ window.onload = () => {
     position: relative;
     opacity: 0;
     visibility: hidden;
-    animation: displayCircles 15s;
+    animation: displayCircles 10s;
   }
   
   @keyframes displayCircles {
@@ -86,7 +87,7 @@ window.onload = () => {
     width: 0.875rem;
     height: 0.875rem;
     border-radius: 50%;
-    background-color: #ddfdff;
+    background-color: #d7b8fa;
     margin: -0.5rem 0 0 -0.5rem;
   }
   
