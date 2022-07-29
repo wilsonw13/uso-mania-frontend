@@ -808,6 +808,11 @@ export default {
 /* Mobile Responsive */
 
 @media screen and (max-width: 900px) {
+  .avatar--nav {
+    width: 35px;
+    height: 35px;
+    margin-right: 3rem;
+  }
   .uso__navbar {
     background-color: rgb(75, 55, 225);
     background-image: none;
@@ -832,8 +837,8 @@ export default {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    height: 30vh;
-    top: 8vh;
+    height: 32rem;
+    top: 8rem;
     background-color: rgb(100, 80, 240);
     width: 100%;
     transform: translateY(-130%);

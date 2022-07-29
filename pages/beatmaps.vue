@@ -1,5 +1,6 @@
 <template>
   <div class="beatmaps__content--body">
+    <LoadingPage/>
     <div class="under-nav"></div>
 
     <div id="play-index">
@@ -76,26 +77,28 @@
           </div>
         </div>
         <div class="play-beatmap-content">
-          <div v-if="!$fetchState.pending" class="play-beatmap-set-container">
-            <div
-              v-for="(oszArray, bmSetName) in bmSetsData"
-              :key="bmSetName"
-              class="play-beatmap-set"
-              @click="
-                (clickedBmSetName = bmSetName), beatmapSoundBit(), changeSound()
-              "
-            >
-              <img
-                v-if="oszArray[0].events[0]"
-                class="beatmap-set-img"
-                :src="`/beatmaps/${bmSetName}/${oszArray[0].events[0][2]}`"
-              />
-              <p class="beatmap-set-title">{{ oszArray[0].metadata.Title }}</p>
-              <p class="beatmap-set-artist">
-                {{ oszArray[0].metadata.Artist }}
-              </p>
+          <a href="#">
+            <div v-if="!$fetchState.pending" class="play-beatmap-set-container">
+              <div
+                v-for="(oszArray, bmSetName) in bmSetsData"
+                :key="bmSetName"
+                class="play-beatmap-set"
+                @click="
+                  (clickedBmSetName = bmSetName), beatmapSoundBit(), changeSound()
+                "
+              >
+                <img
+                  v-if="oszArray[0].events[0]"
+                  class="beatmap-set-img"
+                  :src="`/beatmaps/${bmSetName}/${oszArray[0].events[0][2]}`"
+                />
+                <p class="beatmap-set-title">{{ oszArray[0].metadata.Title }}</p>
+                <p class="beatmap-set-artist">
+                  {{ oszArray[0].metadata.Artist }}
+                </p>
+              </div>
             </div>
-          </div>
+          </a>
           <div v-if="clickedBmSetName" class="play-sidebar">
             <div class="play-sidebar-image-container">
               <img
@@ -385,10 +388,17 @@ export default {
   width: 100vw;
 }
 
+
+/* @media screen and (min-width: 1200px) {
+  .play-content {
+    --sidebar: 35rem;
+  }
+} */
+
 .play-content {
-  --content-width: 55vw;
+  --content-width: 60vw;
   --beatmap-set-container-width: 45vw;
-  --sidebar: 25rem;
+  --sidebar: 30rem;
 
   display: flex;
   flex-direction: column;
@@ -402,6 +412,24 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+@media screen and (max-width: 1199px) {
+  .play-content {
+    --sidebar: 30rem;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .play-content {
+    --sidebar: 25rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .play-content {
+    --sidebar: 12.5rem;
+  }
 }
 
 .play-title-textbox,
@@ -495,6 +523,18 @@ export default {
   padding: 0.25rem 0 0 1.25rem;
 }
 
+@media screen and (max-width: 1199px) {
+  .song-search-bar {
+    width: 50rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .song-search-bar {
+    width: 55rem;
+  }
+}
+
 .song-submit-button {
   width: 5vw;
   min-width: 4rem;
@@ -509,7 +549,7 @@ export default {
   width: var(--content-width);
   display: flex;
   align-items: flex-start;
-  margin: 2rem 0 1rem 0;
+  margin: 2rem 0 6rem 0;
   padding: 1.75rem;
   background-image: linear-gradient(
       rgba(49, 45, 58, 0.7),
@@ -526,12 +566,14 @@ export default {
   display: flex;
   flex-wrap: wrap;
   /* Gap => Column Gap, Row Gap */
-  gap: 2rem 2rem;
+  gap: 1.375rem 1.375rem;
+  margin-right: 1.375rem;
 }
+
 
 .play-beatmap-set {
   position: relative;
-  width: 28rem;
+  width: 25rem;
   height: 13.5rem;
   border: 0.2rem solid rgb(45, 40, 68);
   box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
@@ -544,8 +586,54 @@ export default {
   border-radius: 1rem;
 }
 
+@media screen and (min-width: 1450px) {
+  .play-beatmap-set {
+    width: 22.5rem
+  }
+  .beatmap-set-img {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 1449px) {
+  .play-beatmap-set {
+    width: 20rem;
+  }
+
+  .beatmap-set-img {
+    height: 100%;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .play-beatmap-set {
+     width: inherit;
+  }
+
+  .beatmap-set-img {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .play-beatmap-set {
+     width: inherit;
+  }
+  .beatmap-set-img {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .play-beatmap-set {
+    width: inherit;
+  }
+}
+
+
 .play-beatmap-set:hover {
-  transform: scale(1.05);
+  transform: scale(1.025);
 }
 
 .play-beatmap-set:hover::after {
@@ -711,11 +799,13 @@ export default {
 }
 
 .play-sidebar-difficulties > tbody > tr > th {
-  font-size: 2.5rem;
+  font-size: 2.125rem;
+  padding: 0.75rem;
+  line-height: 20px;
 }
 
 .play-sidebar-difficulties > tbody > tr > th > * {
-  font-size: 3.25rem;
+  font-size: 2.875rem;
   color: rgb(133, 185, 228);
   transition: all 100ms ease-in-out;
   cursor: url('~/assets/images/cursor/paimonCursor4.png'), auto;
@@ -731,6 +821,18 @@ export default {
   margin-bottom: 1rem;
   font-size: 4rem;
   text-shadow: 5px 5px 3px rgb(1, 5, 20);
+}
+
+@media screen and (max-width: 1200px) {
+  .text-placeholder {
+    font-size: 3.5rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .text-placeholder {
+    font-size: 2.875rem;
+  }
 }
 
 .img-placeholder {

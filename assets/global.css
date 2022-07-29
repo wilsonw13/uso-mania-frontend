@@ -169,3 +169,9 @@ a:active {
   width: 100%;
   height: calc(100vh - 9.5rem);
 }
+
+@media screen and (max-width: 900px) {
+  .under-nav {
+    height: 4.25rem;
+  }
+}
