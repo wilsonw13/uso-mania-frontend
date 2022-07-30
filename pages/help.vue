@@ -384,6 +384,12 @@ export default {
   }
 }
 
+@media screen and (max-width: 900px) {
+  .under-nav {
+      height: 4.25rem;
+  }
+}
+
 @media (max-width: 500px) {
   html {
     font-size: 45%;

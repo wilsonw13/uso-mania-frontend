@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <MobileError />
     <NavBar />
     <Nuxt />
   </div>
@@ -7,10 +8,11 @@
 
 <script>
 import NavBar from '~/components/NavBar.vue';
+import MobileError from '~/components/MobileError.vue'
 
 export default {
   components: {
-    NavBar,
+    NavBar, MobileError
   },
 };
 </script>

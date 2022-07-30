@@ -445,4 +445,11 @@ input[type='range'] {
   height: 3rem;
   padding: 0.25rem 0 0 1.25rem;
 }
+
+@media screen and (max-width: 900px) {
+  .under-nav {
+      height: 4.25rem;
+  }
+}
+
 </style>

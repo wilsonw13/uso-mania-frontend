@@ -267,6 +267,12 @@ export default {
   box-shadow: 0 4px 7px rgba(0, 0, 0, 0.7);
 }
 
+@media screen and (max-width: 900px) {
+  .team__header {
+    padding-top: 10rem;
+  }
+}
+
 @media screen and (max-width: 768px) {
   #team__title {
     font-size: 6.5rem;

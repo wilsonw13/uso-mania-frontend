@@ -274,4 +274,13 @@ button {
 .home-section {
   padding: 7rem 0 0 0;
 }
+
+@media screen and (max-width: 900px) {
+  .under-nav {
+      height: 4.25rem;
+  }
+  .hello__user {
+    font-size: 11rem;
+  }
+}
 </style>

@@ -224,4 +224,11 @@ export default {
     font-size: 4.5rem;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .under-nav {
+      height: 4.25rem;
+  }
+}
+
 </style>

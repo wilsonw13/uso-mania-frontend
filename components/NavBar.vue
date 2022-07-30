@@ -10,7 +10,7 @@
           />
         </nuxt-link>
 
-        <ul class="uso__navbar--links">
+        <ul class="uso__navbar--links" @click="close">
           <li>
             <nuxt-link to="/home" class="uso__links">home</nuxt-link>
           </li>
@@ -302,9 +302,14 @@ export default {
         const x = document.querySelector('.login-popup')
         x.classList.remove('active');
       
-    }
-  },
-};
+    },
+    close() {
+
+        const y = document.querySelector(".uso__navbar--links")
+        y.classList.remove("nav-active")
+    },
+  }
+}
 </script>
 
 <style scoped>
@@ -828,7 +833,7 @@ export default {
   .uso__logo {
     width: 3.8rem;
     margin-right: auto;
-    z-index: 9999;
+    z-index: 6900;
   }
 
   .uso__logo--hover {
@@ -869,7 +874,7 @@ export default {
   .uso__login {
     width: 3.25rem;
     margin-left: 0;
-    z-index: 9999;
+    z-index: 6900;
   }
 
   .nav-active {
@@ -878,7 +883,7 @@ export default {
 
   .uso__navburger {
     display: block;
-    z-index: 9999;
+    z-index: 6900;
   }
 
   .uso__navbar--links a {
@@ -893,4 +898,16 @@ export default {
     height: 0;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .uso__navbar {
+    display: none;
+  }
+
+  .uso__navbar--links {
+    display: none;
+  }
+  
+}
+
 </style>

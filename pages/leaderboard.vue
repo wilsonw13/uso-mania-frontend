@@ -283,4 +283,11 @@ tbody {
   font-size: 2.25rem;
   color: #dae0ff;
 }
+
+@media screen and (max-width: 900px) {
+  .under-nav {
+      height: 4.25rem;
+  }
+}
+
 </style>

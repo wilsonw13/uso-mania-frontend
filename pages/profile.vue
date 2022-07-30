@@ -197,4 +197,11 @@ export default {
   font-size: 2.5rem;
   cursor: url('~/assets/images/cursor/paimonCursor4.png'), auto;
 }
+
+@media screen and (max-width: 900px) {
+  .under-nav {
+      height: 4.25rem;
+  }
+}
+
 </style>

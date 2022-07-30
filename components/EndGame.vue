@@ -33,11 +33,11 @@
               <div id="left__col" class="col">
                 <div class="score__container">
                   <div class="score">
-                    Score: {{ Math.floor(stats.score) }} |
+                    <span class="score-span">Score:</span> {{ Math.floor(stats.score) }}
                   </div>
-                  <div class="score">Combo: {{ stats.maxCombo }} |</div>
+                  <div class="score"><span class="score-span">Combo:</span> {{ stats.maxCombo }}</div>
                   <div class="score">
-                    Accuracy: {{ Math.round(stats.accuracy * 10000) / 100 }}%
+                    <span class="score-span">Accuracy:</span> {{ Math.round(stats.accuracy * 10000) / 100 }}%
                   </div>
                 </div>
 
@@ -48,9 +48,9 @@
                     <div id="s200" class="stats">200</div>
                   </div>
                   <div class="scoreValues">
-                    <div class="stats">x{{ totalHits['320'] }}</div>
-                    <div class="stats">x{{ totalHits['300'] }}</div>
-                    <div class="stats">x{{ totalHits['200'] }}</div>
+                    <div class="stats value">x{{ totalHits['320'] }}</div>
+                    <div class="stats value">x{{ totalHits['300'] }}</div>
+                    <div class="stats value">x{{ totalHits['200'] }}</div>
                   </div>
                   <div class="scoreValues">
                     <div id="s100" class="stats">100</div>
@@ -58,9 +58,9 @@
                     <div id="s0" class="stats">miss!</div>
                   </div>
                   <div class="scoreValues">
-                    <div class="stats">x{{ totalHits['100'] }}</div>
-                    <div class="stats">x{{ totalHits['50'] }}</div>
-                    <div class="stats">x{{ totalHits['0'] }}</div>
+                    <div class="stats value">x{{ totalHits['100'] }}</div>
+                    <div class="stats value">x{{ totalHits['50'] }}</div>
+                    <div class="stats value">x{{ totalHits['0'] }}</div>
                   </div>
                 </div>
               </div>
@@ -245,6 +245,11 @@ export default {
 </script>
 
 <style scoped>
+
+.endgame__page {
+  overflow: hidden;
+}
+
 /* declarations */
 
 #leftSide {
@@ -277,6 +282,10 @@ export default {
 .score__container {
   display: flex;
   justify-content: center;
+}
+
+.value {
+  font-style: italic;
 }
 
 /* endgame things */
@@ -317,7 +326,7 @@ export default {
 }
 
 .endgame__stats--container {
-  padding: 25px;
+  padding: 1rem 2rem;
 }
 
 /* o k */
@@ -329,14 +338,14 @@ export default {
 }
 
 .content-sidebar > *:nth-child(1) {
-  flex: 1 1 65%;
+  flex: 1 1 60%;
   background: #373738;
   opacity: 0.8;
   height: 47vh;
 }
 
 .content-sidebar > *:nth-child(2) {
-  flex: 1 1 35%;
+  flex: 1 1 40%;
   /* background: #373738;
   opacity: 0.8; */
 }
@@ -351,35 +360,51 @@ export default {
   justify-content: center;
   /* flex-direction: column; */
   flex-wrap: wrap;
-  padding: 4.5rem 14.5rem 4.5rem 18.5rem;
+  padding: 1.75rem 4rem 2.5rem 4rem;
   text-shadow: 4px 2px 3px #000;
 }
 
 .stats__results > *:nth-child(1) {
-  flex: 1 1 25%;
+  flex: 1 1 15%;
 }
 
 .stats__results > *:nth-child(2) {
-  flex: 1 1 25%;
+  flex: 1 1 15%;
 }
 
 .stats__results > *:nth-child(3) {
-  flex: 1 1 25%;
+  flex: 1 1 15%;
 }
 
 .stats__results > *:nth-child(4) {
   flex: 1 1 15%;
 }
 
+.stats__results > *:nth-child(1) .stats {
+  display: flex;
+  justify-content: center;
+}
+
+.stats__results > *:nth-child(3) .stats {
+  display: flex;
+  justify-content: center;
+}
+
 .score {
-  font-size: 7.5rem;
+  font-size: 6.75rem;
+  line-height: 5rem;
   font-weight: 500;
-  padding: 0 0rem 0 1rem;
+  padding: 0 2rem;
   text-shadow: 4px 2px 3px #000;
 }
 
+.score-span {
+  font-size: 6rem;
+  font-weight: 300;
+}
+
 .stats {
-  font-size: 7rem;
+  font-size: 6.25rem;
   height: 7.5rem;
 }
 
@@ -468,4 +493,126 @@ export default {
 #s0 {
   color: rgb(224, 46, 46);
 }
+
+@media screen and (max-width: 1300px) {
+  #rightSide {
+    padding-right: 8rem;
+  }
+
+  .endgame__header {
+    justify-content: space-between;
+  }
+
+  .header__right {
+    margin-left: 0;
+  }
+
+  .header__left {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+
+  #left__col {
+    padding: 2rem 1rem;
+  }
+
+  #leftTitle {
+    font-size: 3.5rem;
+  }
+
+  #rightSide {
+    font-size: 10.5rem;
+    padding-right: 5rem;
+  }
+
+  .letterRanking {
+    margin-top: 20rem;
+    font-size: 45rem;
+  }
+
+  .content-sidebar > :nth-child(1) {
+    flex: 1 1 40%;
+  }
+
+    .stats__results > *:nth-child(1) {
+    flex: 1 1 12.5%;
+  }
+
+  .stats__results > *:nth-child(2) {
+    flex: 1 1 25%;
+  }
+
+  .stats__results > *:nth-child(3) {
+    flex: 1 1 12.5%;
+  }
+
+  .stats__results > *:nth-child(4) {
+    flex: 1 1 12.5%;
+  }
+
+  .score-span {
+    font-size: 4rem;
+  }
+
+  .score {
+    font-size: 5.25rem;
+    line-height: 4rem;
+  }
+
+  .stats {
+    padding-left: 0.75rem;
+    font-size: 5.5rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+
+  .score {
+    padding: 0 1.25rem;
+  }
+
+  #leftTitle {
+    font-size: 3rem;
+  }
+
+  #rightSide {
+    font-size: 10rem;
+    padding-right: 0;
+  }
+
+  .letterRanking {
+    margin-top: 15rem;
+    font-size: 30rem;
+  }
+
+  .content-sidebar {
+    flex-wrap: nowrap;
+  }
+
+}
+
+@media screen and (max-width: 700px) {
+
+  #leftTitle {
+    font-size: 3rem;
+  }
+
+  #rightSide {
+    font-size: 6rem;
+    padding-right: 0;
+  }
+
+  .letterRanking {
+    margin-top: 15rem;
+    font-size: 30rem;
+  }
+
+  .content-sidebar {
+    flex-wrap: nowrap;
+  }
+
+}
+
 </style>
