@@ -44,6 +44,7 @@ export default {
         width: 100vw;
         height: 200vh;
         background-image: linear-gradient(rgba(8, 12, 72, 0.6), rgba(16, 3, 50, 0.6)), url('@/assets/images/backgrounds/help-bg.jpg');
+        background-position: top;
     }
 
 }
