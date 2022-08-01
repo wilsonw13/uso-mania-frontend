@@ -1,5 +1,5 @@
 <template>
-  <div v-if="onPlayPage" class="uso__navbar--body">
+  <div class="uso__navbar--body">
     <nav class="uso__navbar">
       <div class="uso__logolinks--container">
         <nuxt-link to="/home" class="uso__logo">
@@ -69,7 +69,7 @@
                 <div class="close__popup-btn">✖</div>
 
                 <div class="user-form">
-                  <h2 v-if="!loginSatus" id="sign-in" class="user-sign-in">
+                  <h2 v-if="!isLoggedIn" id="sign-in" class="user-sign-in">
                     sign in to proceed...
                   </h2>
                   <h2 v-else id="signEd-in" class="user-sign-in">
@@ -79,7 +79,7 @@
                   <div id="form__sign-in" class="form-element" @click="remove">
                     <nuxt-link id="btnId" to="/profile">
                       <button
-                        v-if="loginSatus"
+                        v-if="isLoggedIn"
                         id="btn__sign-inId"
                         class="btn__sign-in"
                       >
@@ -91,7 +91,7 @@
                   <div id="form__sign-in" class="form-element" @click="remove">
                     <nuxt-link id="btnId" to="/settings">
                       <button
-                        v-if="loginSatus"
+                        v-if="isLoggedIn"
                         id="btn__sign-inId"
                         class="btn__sign-in"
                       >
@@ -102,7 +102,7 @@
 
                   <div id="form__sign-in" class="form-element">
                     <button
-                      v-if="!loginSatus"
+                      v-if="!isLoggedIn"
                       id="btn__sign-inId"
                       class="btn__sign-in"
                       @click="login()"
@@ -136,92 +136,56 @@
 
 <script>
 export default {
-  name: 'NavBar',
   data() {
     return {
-      onPlayPage: true,
-      loginSatus: this.$store.state.auth.loggedIn,
-      newUser: this.$auth.loggedIn,
-      userdata: this.$auth.user,
-      // username: this.$auth.user.nickname,
-      reapeat: 1,
+      isLoggedIn: this.$auth.loggedIn,
     };
   },
 
-  watch: {
-    $route(to, from) {
-      if (to.name !== from.name) {
-        // if you're going to somewhere else than `wallpaper`
-        // the `return` will end the execution and not go further
-        Howler.stop();
-      }
-      if (to.name === 'play') {
-        this.onPlayPage = false;
-      } else {
-        this.onPlayPage = true;
-      }
-    },
-    newUser(to, from) {
-      if (this.loginSatus) {
-        // ass
-      }
-    },
-  },
-
-  created() {
-    if (this.loginSatus) {
-      // this.patch();
-
-      this.fetchNewUser();
-    }
-  },
-
   mounted() {
-    if (this.onPlayPage === true) {
-      document
-        .querySelector('#show-login')
-        .addEventListener('click', function () {
-          document.querySelector('.login-popup').classList.add('active');
+    document
+      .querySelector('#show-login')
+      .addEventListener('click', function () {
+        document.querySelector('.login-popup').classList.add('active');
+      });
+
+    document
+      .querySelector('.login-popup .close__popup-btn')
+      .addEventListener('click', function () {
+        document.querySelector('.login-popup').classList.remove('active');
+      });
+
+    const modal = document.getElementById('modal__popup');
+
+    window.onclick = (event) => {
+      if (event.target === modal) {
+        document.querySelector('.login-popup').classList.remove('active');
+      }
+    };
+
+    const animateNav = () => {
+      const navBurger = document.querySelector('.uso__navburger');
+      const navLinks = document.querySelector('.uso__navbar--links');
+      const navbarLinks = document.querySelectorAll('.uso__navbar--links li');
+
+      navBurger.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-active');
+
+        navbarLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${
+              index / 7 + 1.5
+            }s`;
+          }
         });
 
-      document
-        .querySelector('.login-popup .close__popup-btn')
-        .addEventListener('click', function () {
-          document.querySelector('.login-popup').classList.remove('active');
-        });
+        navBurger.classList.toggle('toggle');
+      });
+    };
 
-      const modal = document.getElementById('modal__popup');
-
-      window.onclick = (event) => {
-        if (event.target === modal) {
-          document.querySelector('.login-popup').classList.remove('active');
-        }
-      };
-
-      const animateNav = () => {
-        const navBurger = document.querySelector('.uso__navburger');
-        const navLinks = document.querySelector('.uso__navbar--links');
-        const navbarLinks = document.querySelectorAll('.uso__navbar--links li');
-
-        navBurger.addEventListener('click', () => {
-          navLinks.classList.toggle('nav-active');
-
-          navbarLinks.forEach((link, index) => {
-            if (link.style.animation) {
-              link.style.animation = '';
-            } else {
-              link.style.animation = `navLinkFade 0.5s ease forwards ${
-                index / 7 + 1.5
-              }s`;
-            }
-          });
-
-          navBurger.classList.toggle('toggle');
-        });
-      };
-
-      animateNav();
-    }
+    animateNav();
   },
 
   methods: {
@@ -260,13 +224,15 @@ export default {
         userDataFetched.gameSettings.scrollSpeed
       );
     },
+
     remove() {
-      const x = document.querySelector('.login-popup');
-      x.classList.remove('active');
+      document.querySelector('.login-popup').classList.remove('active');
     },
+
     close() {
-      const y = document.querySelector('.uso__navbar--links');
-      y.classList.remove('nav-active');
+      document
+        .querySelector('.uso__navbar--links')
+        .classList.remove('nav-active');
     },
   },
 };

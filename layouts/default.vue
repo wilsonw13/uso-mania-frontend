@@ -1,20 +1,15 @@
 <template>
   <div id="app">
     <MobileError />
+    <Auth />
     <NavBar />
+    <div class="under-nav"></div>
     <Nuxt />
   </div>
 </template>
 
 <script>
-import NavBar from '~/components/NavBar.vue';
-import MobileError from '~/components/MobileError.vue'
-
-export default {
-  components: {
-    NavBar, MobileError
-  },
-};
+export default {};
 </script>
 
 <style></style>

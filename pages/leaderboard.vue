@@ -1,8 +1,5 @@
 <template>
   <div>
-    <routeChange />
-    <div class="under-nav"></div>
-
     <div id="lb__index">
       <div class="lb__container">
         <div class="lb__titlebox">
@@ -84,6 +81,7 @@
 <script>
 export default {
   auth: false,
+
   data() {
     return {
       userDataFetch: [],

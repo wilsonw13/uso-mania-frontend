@@ -1,6 +1,5 @@
 <template>
   <div class="shop-page">
-    <div class="under-nav"></div>
     <div class="wish__container">
       <div class="wishCards">
         <section class="data-bar">

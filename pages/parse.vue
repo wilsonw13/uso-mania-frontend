@@ -1,7 +1,5 @@
 <template>
   <div id="parse-container">
-    <div class="under-nav"></div>
-
     <h1>Check Vue-Dev Tools</h1>
 
     <input
@@ -99,7 +97,6 @@ export default {
         this.entries = await new zip.ZipReader(
           new zip.BlobReader(this.rawFile)
         ).getEntries();
-
       } else {
         alert(`${this.rawFile.name} is not a valid .osz file!`);
       }

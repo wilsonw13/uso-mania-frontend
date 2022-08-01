@@ -1,6 +1,5 @@
 <template>
   <div v-if="loaded.beatmapData" id="game-index">
-    <NavBar v-show="false" />
     <div v-if="!gameEnded" id="game-page-container">
       <div
         v-if="beatmapData.metadata"
@@ -96,7 +95,7 @@
 
 <script>
 export default {
-  layout: 'nonav',
+  layout: 'noNav',
 
   data() {
     return {

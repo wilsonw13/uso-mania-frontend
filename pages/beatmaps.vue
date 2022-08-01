@@ -1,8 +1,6 @@
 <template>
   <div class="beatmaps__content--body">
     <BeatmapsLoadingPage />
-    <div class="under-nav"></div>
-
     <div id="play-index">
       <div class="play-content">
         <div class="play-title-textbox">

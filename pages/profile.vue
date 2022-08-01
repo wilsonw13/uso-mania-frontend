@@ -1,7 +1,5 @@
 <template>
   <div>
-    <div class="under-nav"></div>
-
     <div id="profile-body">
       <div id="profile-container">
         <div class="cover-photo"></div>

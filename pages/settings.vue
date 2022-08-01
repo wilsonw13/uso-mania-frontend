@@ -1,6 +1,5 @@
 <template>
   <div class="settings__page">
-    <div class="under-nav"></div>
     <section class="landing">
       <video
         id="landing-video"

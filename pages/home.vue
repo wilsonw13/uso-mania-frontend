@@ -1,7 +1,5 @@
 <template>
   <div>
-    <div class="under-nav"></div>
-
     <h1 class="hello__user">welcome to uso!</h1>
 
     <section class="landing">

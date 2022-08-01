@@ -1,6 +1,5 @@
 <template>
   <div class="help-page">
-    <div class="under-nav"></div>
     <div class="help-page-container">
       <section id="paimon" class="paimonInfo">
         <div class="section-header">
@@ -386,7 +385,7 @@ export default {
 
 @media screen and (max-width: 900px) {
   .under-nav {
-      height: 4.25rem;
+    height: 4.25rem;
   }
 }
 

@@ -145,7 +145,7 @@ export default {
 }
 
 .team__header {
-  padding-top: 18rem;
+  padding-top: 5rem;
   color: #444;
   margin: auto;
   /* line-height: 50px; */
