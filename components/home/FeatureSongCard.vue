@@ -3,7 +3,8 @@
     <div class="card">
       <img :src="cardImg" alt="Yoru ni Kakeru" class="card-img" />
       <h2 class="card-text">
-        {{ cardType }}: {{ cardTitle }} - {{ cardArtist }}
+        <h3 class="card-title">
+          {{ cardType }}: <span>{{ cardTitle }} - {{ cardArtist }}</span></h3>
       </h2>
     </div>
   </NuxtLink>
@@ -12,7 +13,7 @@
 <script>
 export default {
   props: {
-    cardType: { type: String, default: 'Featured Map' },
+    cardType: { type: String, default: 'FEATURED MAP' },
     cardTitle: { type: String, default: '' },
     cardArtist: { type: String, default: '' },
     cardRoute: { type: String, default: '/beatmaps' },
@@ -54,8 +55,6 @@ a {
   height: 27rem;
   margin: 1rem;
 
-  border-radius: 1.2rem;
-
   /* box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4); */
   transition: 0.3s all;
   opacity: 0.8;
@@ -69,7 +68,7 @@ a {
 .card-img {
   width: 100%;
   height: 100%;
-  border-radius: 1rem;
+  border-radius: 1.25rem;
 
   z-index: 0;
 }
@@ -77,6 +76,7 @@ a {
 .card-text {
   position: absolute;
   bottom: 0;
+  border-radius: 1.25rem;
 
   height: 100%;
   width: 100%;
@@ -89,4 +89,24 @@ a {
 
   z-index: 10;
 }
+
+.card-title {
+  padding: 0.75rem 1rem;
+  position: absolute;
+  bottom: 0;
+  font-size: 3rem;
+}
+
+.card-title span {
+  font-weight: 400;
+  font-size: 3rem;
+}
+
+/* @media screen and (max-width: 1100px) {
+  .card {
+    height: 22rem;
+    width: 40rem;
+  }
+} */
+
 </style>

@@ -217,11 +217,26 @@ button {
 .news-header {
   animation: filterChange 5s infinite ease 0s;
   color: #9cf5b9;
+} 
+
+.feature-songs {
+  padding: 8rem 0rem 0rem 0rem;
 }
 
-.home-section {
-  padding: 5rem 0 4rem 0;
+.news {
+  padding: 2rem 2rem 4rem 2rem;
 }
+
+@media screen and (max-width: 1100px) {
+  .home-content-container {
+    width: auto;
+  }
+
+  .feature-songs {
+  padding: 4rem 0rem 0rem 0rem;
+}
+}
+
 
 @media screen and (max-width: 900px) {
   .under-nav {

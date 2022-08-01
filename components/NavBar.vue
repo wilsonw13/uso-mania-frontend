@@ -686,7 +686,6 @@ export default {
     transform: translateY(-130%);
     z-index: -1;
     transition: 250ms ease-in-out;
-    /* transition: 0.2s ease-in-out; */
   }
 
   .uso__circle {

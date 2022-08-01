@@ -240,7 +240,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: repeat(6, 6rem);
-  grid-row-gap: 4rem;
+  grid-row-gap: 6rem;
 }
 
 .paimonStuff {
@@ -292,14 +292,14 @@ export default {
 
 .paimonStuff-header h3 {
   font-size: 6rem;
-  line-height: 2.6rem;
+  line-height: 30px;
   font-weight: 400;
   margin-bottom: 0.5rem;
 }
 
 .paimonStuff-text {
+  line-height: 20px;
   font-size: 2.7rem;
-  text-align: justify;
 }
 
 .paimonInfo-img-wrapper {
