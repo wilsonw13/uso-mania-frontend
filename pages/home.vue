@@ -220,7 +220,7 @@ button {
 }
 
 .home-section {
-  padding: 7rem 0 0 0;
+  padding: 5rem 0 4rem 0;
 }
 
 @media screen and (max-width: 900px) {

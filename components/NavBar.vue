@@ -233,6 +233,9 @@ export default {
       document
         .querySelector('.uso__navbar--links')
         .classList.remove('nav-active');
+
+      const navBurger = document.querySelector('.uso__navburger');
+      navBurger.classList.remove('toggle');
     },
   },
 };
@@ -336,13 +339,13 @@ export default {
   font-size: 28px;
   font-weight: 300;
   text-decoration: none;
-  transition: all 200ms ease-in;
+  transition: 100ms;
   cursor: url('~/assets/images/cursor/paimonCursor4.png'), auto;
 }
 
 .uso__navbar--links a:hover {
   color: #ffffff;
-  border-bottom: 0.1rem solid #ffffff;
+  border-bottom: 0.125rem solid #ffffff;
 }
 
 /* Navigation Rightside [circles, login avatar] */
@@ -645,6 +648,7 @@ export default {
 /* Mobile Responsive */
 
 @media screen and (max-width: 900px) {
+
   .avatar--nav {
     width: 35px;
     height: 35px;
@@ -674,11 +678,14 @@ export default {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    height: 32rem;
+    padding: 2.5rem 0;
+    height: 35rem;
     top: 8rem;
     background-color: rgb(100, 80, 240);
     width: 100%;
     transform: translateY(-130%);
+    z-index: -1;
+    transition: 250ms ease-in-out;
     /* transition: 0.2s ease-in-out; */
   }
 
@@ -714,7 +721,7 @@ export default {
   }
 
   .uso__navbar--links a {
-    font-size: 26px;
+    font-size: 30px;
   }
 
   .uso__navbar--links {

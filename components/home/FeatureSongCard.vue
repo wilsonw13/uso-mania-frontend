@@ -69,13 +69,14 @@ a {
 .card-img {
   width: 100%;
   height: 100%;
+  border-radius: 1rem;
 
   z-index: 0;
 }
 
 .card-text {
   position: absolute;
-  top: 0;
+  bottom: 0;
 
   height: 100%;
   width: 100%;
