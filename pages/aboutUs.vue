@@ -14,8 +14,8 @@
           <div class="college">stony brook university '26</div>
           <div class="role">captain</div>
           <div class="about">
-            spent like 16 hours straight just coding one time, somehow break
-            thecode but still makes it work
+            spent like 16 hours straight just coding one time. somehow breaks
+            the code but still makes it work
           </div>
 
           <div class="social__links">

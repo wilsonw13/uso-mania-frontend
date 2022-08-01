@@ -122,19 +122,6 @@
               </div>
             </div>
           </div>
-
-          <!-- <nuxt-link v-if="loginSatus" to="/beatmaps" class="uso__avatar--img">
-            <img
-              src="~/assets/images/navigation/nav-avatar.png"
-              class="uso__login"
-            />
-          </nuxt-link>
-
-          <li v-else>
-            <button class="btn" @click="login()">login</button>
-          </li> -->
-
-          <!-- @click="login()"  -->
         </div>
       </div>
 
@@ -202,14 +189,14 @@ export default {
         .addEventListener('click', function () {
           document.querySelector('.login-popup').classList.remove('active');
         });
-        
-    const modal = document.getElementById('modal__popup');
+
+      const modal = document.getElementById('modal__popup');
 
       window.onclick = (event) => {
         if (event.target === modal) {
-        document.querySelector('.login-popup').classList.remove('active'); 
+          document.querySelector('.login-popup').classList.remove('active');
         }
-      }
+      };
 
       const animateNav = () => {
         const navBurger = document.querySelector('.uso__navburger');
@@ -242,6 +229,10 @@ export default {
       await this.$auth.loginWith('auth0');
     },
 
+    async logout() {
+      await this.$auth.logout();
+    },
+
     async fetchNewUser() {
       const getUserId = this.$auth.user.sub.replace('auth0|', '');
       // http://localhost:8000/6289babceda0db001153a8d8
@@ -260,22 +251,6 @@ export default {
       const userDataFetched = await userDataFetch.json();
       console.log(userDataFetched);
       this.$store.commit('gameData', userDataFetched);
-      // this.user = userDataFetched;
-
-      // userDataFetched.forEach((user) => {
-      //   this.userData.push(user);
-      // });
-
-      // const gameData = userDataFetched.gameData;
-      // console.log(gameData);
-      // this.$store.commit(
-      //   'setSettings',
-      //   userDataFetched.volSettings.master,
-      //   userDataFetched.volSettings.music,
-      //   userDataFetched.volSettings.hitSound,
-      //   userDataFetched.gameSettings.scrollSpeed,
-      //   userDataFetched.userSettings.username
-      // );
 
       this.$store.commit('setSettings', userDataFetched.volSettings.master);
       this.$store.commit('setSettings2', userDataFetched.volSettings.music);
@@ -284,32 +259,17 @@ export default {
         'setSettings4',
         userDataFetched.gameSettings.scrollSpeed
       );
-
-      // this.$store.commit('setSettings5', userDataFetched.username);
-
-      // this.$store.commit(' gameData', userDataFetched.gameData.A);
-      // this.$store.commit(' gameData2', userDataFetched.gameData.S);
-      // this.$store.commit(' gameData3', userDataFetched.gameData.SS);
-      // this.$store.commit(' gameData4', userDataFetched.gameData.accuracy);
-      // this.$store.commit(' gameData5', userDataFetched.gameData.maxCombo);
-      // this.$store.commit(' gameData6', userDataFetched.gameData.performance);
-      // this.$store.commit(' gameData7', userDataFetched.gameData.playCount);
-    },
-    async logout() {
-      await this.$auth.logout();
     },
     remove() {
-        const x = document.querySelector('.login-popup')
-        x.classList.remove('active');
-      
+      const x = document.querySelector('.login-popup');
+      x.classList.remove('active');
     },
     close() {
-
-        const y = document.querySelector(".uso__navbar--links")
-        y.classList.remove("nav-active")
+      const y = document.querySelector('.uso__navbar--links');
+      y.classList.remove('nav-active');
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -318,88 +278,6 @@ export default {
 @keyframes pulse {
   to {
     transform: scale(1.2);
-  }
-}
-
-@keyframes filterChange {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  20% {
-    filter: hue-rotate(45deg);
-  }
-  40% {
-    filter: hue-rotate(115deg);
-  }
-  60% {
-    filter: hue-rotate(200deg);
-  }
-  80% {
-    filter: hue-rotate(333deg);
-  }
-  100% {
-    filter: hue-rotate(0deg);
-  }
-}
-
-@-o-keyframes filterChange {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  20% {
-    filter: hue-rotate(45deg);
-  }
-  40% {
-    filter: hue-rotate(115deg);
-  }
-  60% {
-    filter: hue-rotate(200deg);
-  }
-  80% {
-    filter: hue-rotate(333deg);
-  }
-  100% {
-    filter: hue-rotate(0deg);
-  }
-}
-@-moz-keyframes filterChange {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  20% {
-    filter: hue-rotate(45deg);
-  }
-  40% {
-    filter: hue-rotate(115deg);
-  }
-  60% {
-    filter: hue-rotate(200deg);
-  }
-  80% {
-    filter: hue-rotate(333deg);
-  }
-  100% {
-    filter: hue-rotate(0deg);
-  }
-}
-@-webkit-keyframes filterChange {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  20% {
-    filter: hue-rotate(45deg);
-  }
-  40% {
-    filter: hue-rotate(115deg);
-  }
-  60% {
-    filter: hue-rotate(200deg);
-  }
-  80% {
-    filter: hue-rotate(333deg);
-  }
-  100% {
-    filter: hue-rotate(0deg);
   }
 }
 
@@ -419,23 +297,6 @@ export default {
   /* linear-gradient(rgba(13, 4, 66, 0.7), rgba(20, 4, 66, 0.7)) */
 
   /* filter: hue-rotate(255deg) saturate(.6); */
-
-  /*
-    -webkit-animation: filterChange 5s infinite ease 0s;;
-    -moz-animation: filterChange 5s infinite ease 0s;;
-    -o-animation: filterChange 5s infinite ease 0s;;
-     animation: filterChange 5s infinite ease 0s;
-  */
-
-  /*
-    Filter Notes:
-      20deg = yellow
-      45deg = brown
-      115deg = green
-      200deg = blue
-      255deg = indigo
-      333deg = purple
-  */
 }
 
 /* Navigation Bar Flex-Setup */
@@ -907,7 +768,5 @@ export default {
   .uso__navbar--links {
     display: none;
   }
-  
 }
-
 </style>

@@ -1,14 +1,15 @@
-[{
-  "mal_id": null,
-  "rank": 0,
-  "title": "Chen, Mike",
-  "url": null,
-  "name_kanji": null,
-  "animeography": null,
-  "mangaography": null,
-  "favorites": 999999,
-  "image_url": "https://3.files.edl.io/aeb1/20/12/02/154937-46cc468f-b7f4-4bb3-945e-3265bdb605d4.jpg"
-},
+[
+  {
+    "mal_id": 420,
+    "rank": 0,
+    "title": "Chen, Mike",
+    "url": null,
+    "name_kanji": null,
+    "animeography": null,
+    "mangaography": null,
+    "favorites": 999999,
+    "image_url": "https://3.files.edl.io/aeb1/20/12/02/154937-46cc468f-b7f4-4bb3-945e-3265bdb605d4.jpg"
+  },
   {
     "mal_id": 417,
     "rank": 1,
@@ -40510,5 +40511,4 @@
     "favorites": 1488,
     "image_url": "https://cdn.myanimelist.net/images/characters/10/55992.jpg?s=d8dafddcd61e1c81c789c16c328f64ba"
   }
-  
 ]

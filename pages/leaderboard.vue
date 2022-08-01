@@ -6,7 +6,7 @@
     <div id="lb__index">
       <div class="lb__container">
         <div class="lb__titlebox">
-          <h1 class="lb__title">♬ rankings</h1>
+          <h1 class="lb__title">♬ global rankings</h1>
         </div>
 
         <div class="yae__filler"></div>
@@ -286,8 +286,7 @@ tbody {
 
 @media screen and (max-width: 900px) {
   .under-nav {
-      height: 4.25rem;
+    height: 4.25rem;
   }
 }
-
 </style>

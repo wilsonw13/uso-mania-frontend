@@ -27,11 +27,14 @@
             repudiandae aliquid pariatur. Vitae, at!
           </p>
 
-          <change-pfp :show-modal="showModal" :all-owned="user[0].characters" />
+          <ProfileChangePfp
+            :show-modal="showModal"
+            :all-owned="user[0].characters"
+          />
         </div>
         <section class="collection-section">
           <h1 id="collection-header">Collection</h1>
-          <owned-character :all-owned="user[0].characters" />
+          <ProfileOwnedCharacter :all-owned="user[0].characters" />
         </section>
       </div>
     </div>
@@ -40,17 +43,10 @@
 </template>
 
 <script>
-import ChangePfp from '../components/ChangePfp.vue';
-import ownedCharacter from '../components/OwnedCharacter.vue';
 import user from '~/static/user.json';
 import characters from '~/static/characters.json';
 
 export default {
-  components: {
-    ownedCharacter,
-    ChangePfp,
-  },
-
   data() {
     return {
       username: this.$auth.user.nickname,
@@ -200,8 +196,7 @@ export default {
 
 @media screen and (max-width: 900px) {
   .under-nav {
-      height: 4.25rem;
+    height: 4.25rem;
   }
 }
-
 </style>

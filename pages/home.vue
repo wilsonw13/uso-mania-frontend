@@ -2,7 +2,7 @@
   <div>
     <div class="under-nav"></div>
 
-    <h1 class="hello__user">welcome to uso, {{ username }} !</h1>
+    <h1 class="hello__user">welcome to uso!</h1>
 
     <section class="landing">
       <video
@@ -20,25 +20,25 @@
     <section class="home-main">
       <div class="home-content-container">
         <section class="feature-songs home-section">
-          <feature-song-card
+          <HomeFeatureSongCard
             card-title="Six Trillion Years and Overnight Story"
             card-artist="kemu feat. IA"
             card-route="beatmaps"
             card-img="/beatmaps/1213119/rkc.jpg"
           />
-          <feature-song-card
+          <HomeFeatureSongCard
             card-title="Jingle Bells"
             card-artist="Altria Pendragon (Santa Alter) (CV : Ayako Kawasumi)"
             card-route="beatmaps"
             card-img="/beatmaps/689134/BG.jpg"
           />
-          <feature-song-card
+          <HomeFeatureSongCard
             card-title="Goodbye Moonmen"
             card-artist="The Living Tombstone feat. Fart"
             card-route="beatmaps"
             card-img="/beatmaps/1249137/mJGRHh3.jpg"
           />
-          <feature-song-card
+          <HomeFeatureSongCard
             card-title="Harumachi Clover (TV Size)"
             card-artist="Hanasaka Yui (CV: M.A.O)"
             card-route="beatmaps"
@@ -48,7 +48,32 @@
         <section class="news home-section">
           <h1 class="news-header">!uso News</h1>
 
-          <news-card />
+          <div class="news-container">
+            <HomeNewsCard>
+              <template #header>we welcome you to !uso mania~</template>
+
+              <template #body>
+                we do not give a starving man a fish. we teach him how to fish
+                and make him independent" - yukino yukinoshita
+                <br />
+                ...
+                <br />
+                !uso mania is an ambitious full stack web application developed
+                over the course of six months. this project fully involves the
+                application of numerous real world industry skills, from the
+                fundamentals of web development like html, css, and javascript,
+                to the utilization of vue, vuex, nuxt, auth0, and several
+                libraries. led by captain wilson wuchen and with team members
+                harvey, kenny, ethan, and ryan, the execution of a complex
+                rhythm game went from dream to reality.
+                <br />
+                and of course...
+                <br />
+                ...thank you to the great mr. whalen himself, thank you for all
+                your support and never ever going easy on us~
+              </template>
+            </HomeNewsCard>
+          </div>
         </section>
       </div>
     </section>
@@ -56,16 +81,11 @@
 </template>
 
 <script>
-import FeatureSongCard from '../components/homepage/FeatureSongCard.vue';
-import NewsCard from '../components/homepage/NewsCard.vue';
-
 export default {
   auth: false,
-  components: { FeatureSongCard, NewsCard },
 
   data() {
     return {
-      username: this.$auth.user.nickname,
       featureSongs: [
         {
           cardType: 'Featured Map',
@@ -90,7 +110,7 @@ export default {
 
     testEnv() {},
 
-    getFeatureCards: async function getFeatureCards() {
+    async getFeatureCards() {
       /*  try {
         const data = await this.$axios.$get('data.json');
         const data = await fetch('../static/data.json');
@@ -106,96 +126,19 @@ export default {
 </script>
 
 <style scoped>
-@keyframes filterChange {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  20% {
-    filter: hue-rotate(45deg);
-  }
-  40% {
-    filter: hue-rotate(115deg);
-  }
-  60% {
-    filter: hue-rotate(200deg);
-  }
-  80% {
-    filter: hue-rotate(333deg);
-  }
-  100% {
-    filter: hue-rotate(0deg);
-  }
-}
-@-o-keyframes filterChange {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  20% {
-    filter: hue-rotate(45deg);
-  }
-  40% {
-    filter: hue-rotate(115deg);
-  }
-  60% {
-    filter: hue-rotate(200deg);
-  }
-  80% {
-    filter: hue-rotate(333deg);
-  }
-  100% {
-    filter: hue-rotate(0deg);
-  }
-}
-@-moz-keyframes filterChange {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  20% {
-    filter: hue-rotate(45deg);
-  }
-  40% {
-    filter: hue-rotate(115deg);
-  }
-  60% {
-    filter: hue-rotate(200deg);
-  }
-  80% {
-    filter: hue-rotate(333deg);
-  }
-  100% {
-    filter: hue-rotate(0deg);
-  }
-}
-
-@-webkit-keyframes filterChange {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  20% {
-    filter: hue-rotate(45deg);
-  }
-  40% {
-    filter: hue-rotate(115deg);
-  }
-  60% {
-    filter: hue-rotate(200deg);
-  }
-  80% {
-    filter: hue-rotate(333deg);
-  }
-  100% {
-    filter: hue-rotate(0deg);
-  }
-}
-
 .hello__user {
-  font-size: 13rem;
-  font-weight: 400;
-  text-shadow: 4px 4px 5px #212272;
   position: absolute;
   top: 50%;
-  text-align: center;
+
   width: 100%;
+
+  font-size: 13rem;
+  font-weight: 400;
+
+  text-align: center;
+  text-shadow: 0.8rem 0.8rem 0.5rem #212272;
+
+  animation: filterChange 4s infinite ease 0s;
 }
 
 .container {
@@ -266,6 +209,13 @@ button {
   flex-wrap: wrap;
 }
 
+.news-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem 0rem;
+}
+
 .news-header {
   animation: filterChange 5s infinite ease 0s;
   color: #9cf5b9;
@@ -277,7 +227,7 @@ button {
 
 @media screen and (max-width: 900px) {
   .under-nav {
-      height: 4.25rem;
+    height: 4.25rem;
   }
   .hello__user {
     font-size: 11rem;

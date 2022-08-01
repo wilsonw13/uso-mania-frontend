@@ -10,26 +10,11 @@
         </section>
         <section class="night-market">
           <div class="night-market-card-container">
-            <night-market-card
-              :load-roll="loadRoll"
-              @rolled-card="logRolledCard"
-            />
-            <night-market-card
-              :load-roll="loadRoll"
-              @rolled-card="logRolledCard"
-            />
-            <night-market-card
-              :load-roll="loadRoll"
-              @rolled-card="logRolledCard"
-            />
-            <night-market-card
-              :load-roll="loadRoll"
-              @rolled-card="logRolledCard"
-            />
-            <night-market-card
-              :load-roll="loadRoll"
-              @rolled-card="logRolledCard"
-            />
+            <ShopCard :load-roll="loadRoll" @rolled-card="logRolledCard" />
+            <ShopCard :load-roll="loadRoll" @rolled-card="logRolledCard" />
+            <ShopCard :load-roll="loadRoll" @rolled-card="logRolledCard" />
+            <ShopCard :load-roll="loadRoll" @rolled-card="logRolledCard" />
+            <ShopCard :load-roll="loadRoll" @rolled-card="logRolledCard" />
           </div>
           <button class="roll-button" @click="pressRoll()">wish!</button>
           <div class="currency__container">
@@ -42,9 +27,7 @@
 </template>
 
 <script>
-import NightMarketCard from '../components/NightMarketCard.vue';
 export default {
-  components: { NightMarketCard },
   data() {
     return {
       loadRoll: false,
@@ -227,8 +210,7 @@ export default {
 
 @media screen and (max-width: 900px) {
   .under-nav {
-      height: 4.25rem;
+    height: 4.25rem;
   }
 }
-
 </style>

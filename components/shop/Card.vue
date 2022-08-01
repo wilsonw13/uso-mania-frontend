@@ -41,7 +41,7 @@ export default {
 
   computed: {
     rimSrc() {
-      return require(`../assets/images/night-market-${this.cardBg}-rim.png`);
+      return require(`~/assets/images/night-market-${this.cardBg}-rim.png`);
     },
   },
   watch: {

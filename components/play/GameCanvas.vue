@@ -34,8 +34,6 @@
 /* eslint-disable */
 
 export default {
-  // components: { NavBar },
-  // layouts: 'noNav',
   props: {
     beatmapData: {
       required: true,
@@ -157,6 +155,12 @@ export default {
         clearInterval(loadedTimerID);
       }
     }, 200);
+  },
+
+  destroyed() {
+    const t = this;
+
+    if (t.music) t.music.stop;
   },
 
   computed: {

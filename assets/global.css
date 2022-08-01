@@ -170,6 +170,100 @@ a:active {
   height: calc(100vh - 9.5rem);
 }
 
+  /*
+    Filter Notes:
+      20deg = yellow
+      45deg = brown
+      115deg = green
+      200deg = blue
+      255deg = indigo
+      333deg = purple
+  */
+
+@keyframes filterChange {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    filter: hue-rotate(45deg);
+  }
+  40% {
+    filter: hue-rotate(115deg);
+  }
+  60% {
+    filter: hue-rotate(200deg);
+  }
+  80% {
+    filter: hue-rotate(333deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+@-o-keyframes filterChange {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    filter: hue-rotate(45deg);
+  }
+  40% {
+    filter: hue-rotate(115deg);
+  }
+  60% {
+    filter: hue-rotate(200deg);
+  }
+  80% {
+    filter: hue-rotate(333deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+@-moz-keyframes filterChange {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    filter: hue-rotate(45deg);
+  }
+  40% {
+    filter: hue-rotate(115deg);
+  }
+  60% {
+    filter: hue-rotate(200deg);
+  }
+  80% {
+    filter: hue-rotate(333deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+@-webkit-keyframes filterChange {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    filter: hue-rotate(45deg);
+  }
+  40% {
+    filter: hue-rotate(115deg);
+  }
+  60% {
+    filter: hue-rotate(200deg);
+  }
+  80% {
+    filter: hue-rotate(333deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
 @media screen and (max-width: 900px) {
   .under-nav {
     height: 4.25rem;

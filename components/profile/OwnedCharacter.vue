@@ -3,14 +3,13 @@
     <div
       v-for="card in displayedCards"
       :id="card.rank"
-      :key="card"
+      :key="card.rank"
       class="owned-card"
       @click="getID()"
     >
-
       <div class="card-gradient"></div>
       <p class="chara-name">{{ card.title }}</p>
-  
+
       <img :src="card.image_url" alt="" class="chara-img" />
     </div>
   </div>

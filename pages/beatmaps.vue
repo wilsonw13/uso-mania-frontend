@@ -1,6 +1,6 @@
 <template>
   <div class="beatmaps__content--body">
-    <LoadingPage/>
+    <BeatmapsLoadingPage />
     <div class="under-nav"></div>
 
     <div id="play-index">
@@ -84,7 +84,9 @@
                 :key="bmSetName"
                 class="play-beatmap-set"
                 @click="
-                  (clickedBmSetName = bmSetName), beatmapSoundBit(), changeSound()
+                  (clickedBmSetName = bmSetName),
+                    beatmapSoundBit(),
+                    changeSound()
                 "
               >
                 <img
@@ -92,7 +94,9 @@
                   class="beatmap-set-img"
                   :src="`/beatmaps/${bmSetName}/${oszArray[0].events[0][2]}`"
                 />
-                <p class="beatmap-set-title">{{ oszArray[0].metadata.Title }}</p>
+                <p class="beatmap-set-title">
+                  {{ oszArray[0].metadata.Title }}
+                </p>
                 <p class="beatmap-set-artist">
                   {{ oszArray[0].metadata.Artist }}
                 </p>
@@ -173,6 +177,7 @@
 <script>
 export default {
   auth: false,
+
   data() {
     return {
       bmSets: {},
@@ -235,6 +240,12 @@ export default {
       trailWidth: 5,
       svgStyle: { width: '100%', height: '30%' },
     });
+  },
+
+  destroyed() {
+    const t = this;
+
+    if (t.musicBeatmap) t.musicBeatmap.stop();
   },
 
   methods: {
@@ -387,7 +398,6 @@ export default {
 .play-index {
   width: 100vw;
 }
-
 
 /* @media screen and (min-width: 1200px) {
   .play-content {
@@ -570,7 +580,6 @@ export default {
   margin-right: 1.375rem;
 }
 
-
 .play-beatmap-set {
   position: relative;
   width: 25rem;
@@ -588,7 +597,7 @@ export default {
 
 @media screen and (min-width: 1450px) {
   .play-beatmap-set {
-    width: 22.5rem
+    width: 22.5rem;
   }
   .beatmap-set-img {
     height: 100%;
@@ -605,10 +614,9 @@ export default {
   }
 }
 
-
 @media screen and (max-width: 1200px) {
   .play-beatmap-set {
-     width: inherit;
+    width: inherit;
   }
 
   .beatmap-set-img {
@@ -618,7 +626,7 @@ export default {
 
 @media screen and (max-width: 991px) {
   .play-beatmap-set {
-     width: inherit;
+    width: inherit;
   }
   .beatmap-set-img {
     height: 100%;
@@ -630,7 +638,6 @@ export default {
     width: inherit;
   }
 }
-
 
 .play-beatmap-set:hover {
   transform: scale(1.025);

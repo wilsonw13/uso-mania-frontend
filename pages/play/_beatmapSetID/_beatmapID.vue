@@ -17,7 +17,7 @@
         START
       </button>
 
-      <GameCanvas
+      <PlayGameCanvas
         ref="gameCanvas"
         :beatmap-data="beatmapData"
         :paused="paused"
@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-    <EndGame
+    <PlayEndGame
       v-else
       :beatmap-data="beatmapData"
       :total-hits="totalHits"
@@ -91,16 +91,11 @@
       }"
     />
   </div>
-  <Play-Beatmap-Not-Found v-else-if="beatmapNotFoundError" />
+  <PlayBeatmapNotFound v-else-if="beatmapNotFoundError" />
 </template>
 
 <script>
-import PlayBeatmapNotFound from '../../../components/errors/playBeatmapNotFound.vue';
-import GameCanvas from '../../../components/GameCanvas.vue';
-
 export default {
-  components: { GameCanvas, PlayBeatmapNotFound },
-
   layout: 'nonav',
 
   data() {

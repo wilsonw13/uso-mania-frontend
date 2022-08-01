@@ -1,6 +1,8 @@
 export default {
   ssr: false,
 
+  components: true,
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     script: [
@@ -42,18 +44,9 @@ export default {
         icons: {
           solid: true,
         },
-        // solid: ['faplay', 'faPause', 'faForwardStep', 'faBackward'],
-        // solid: ['faPlay', 'faPause', 'faForwardStep', 'faBackward'],
       },
     ],
   ],
-
-  // fontawesome: {
-  //   icons: {
-  //     solid: true,
-  //     brands: true,
-  //   },
-  // },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
