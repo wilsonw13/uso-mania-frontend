@@ -241,6 +241,7 @@ export default {
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: repeat(6, 6rem);
   grid-row-gap: 6rem;
+  margin-bottom: 6rem;
 }
 
 .paimonStuff {
