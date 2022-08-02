@@ -312,7 +312,7 @@ export default {
         t.changeSound();
       }
 
-      if (t.clicked === true) {
+      if (t.clicked) {
         clearTimeout(t.timeoutID);
         t.currAudioBarVal = t.progressAudioBar.value();
         t.musicBeatmap.pause();
@@ -358,8 +358,6 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@600&display=swap');
-
 *,
 .beatmaps__content--body {
   font-family: 'Dongle', sans-serif;

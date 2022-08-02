@@ -160,7 +160,7 @@ export default {
   destroyed() {
     const t = this;
 
-    if (t.music) t.music.stop;
+    if (t.music) t.music.stop();
   },
 
   computed: {
