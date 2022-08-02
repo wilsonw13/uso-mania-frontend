@@ -3,7 +3,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  middleware({ redirect }) {
+    return redirect('/home');
+  },
+};
 </script>
 
 <style></style>
