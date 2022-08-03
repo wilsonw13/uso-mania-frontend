@@ -14,7 +14,6 @@
       ></video>
     </section>
 
-
     <div class="settings__container">
       <h1 id="settings__title">settings.</h1>
       <form class="settings__form">
@@ -23,31 +22,7 @@
             <h2 id="sounds__title">sfx/sounds</h2>
             <h3 id="sounds__subTitle">adjust your volume settings</h3>
           </header>
-           <button
-            class="btn"
-            @click="
-              patch(),
-                $store.commit('setSettings', masterVolume),
-                $store.commit(
-                  'setSettings2',
-
-                  musicVolume
-                ),
-                $store.commit(
-                  'setSettings3',
-
-                  hitSoundsVolume
-                ),
-                $store.commit(
-                  'setSettings4',
-
-                  scrollSpeed
-                ),
-                $store.commit('setSettings5', username)
-            "
-          >
-            update
-          </button>
+          <button class="btn" @click.prevent="saveSettings()">update</button>
 
           <fieldset class="settings__field">
             <!-- <div id="fieldset__user" class="fieldset-item">
@@ -72,25 +47,22 @@
                 </svg>
               </picture>
               <div class="input-stack">
-                <label id="media-volume" for="media-volume" aria-hidden="true">
-                  master volume ~
-                </label>
+                <label aria-hidden="true">master ~</label>
                 <input
                   v-model.number="settings.volume.master"
-                  name="media-volume"
-                  aria-labelledby="media-volume"
                   type="range"
-                  step="0.01"
+                  step="1"
                   min="0"
-                  max="1"
+                  max="100"
                   style="--track-fill: 30%"
                 />
                 <input
+                  v-model="settings.volume.master"
                   type="number"
                   min="0"
                   max="100"
-                  :value="(settings.volume.master * 100).toFixed(0)"
-                  @change="log($event.target._value)"
+                  @keydown="validateVolume('master')"
+                  @keyup="validateVolume('master')"
                 />
               </div>
             </div>
@@ -104,20 +76,23 @@
                 </svg>
               </picture>
               <div class="input-stack">
-                <label id="media-volume" for="media-volume" aria-hidden="true">
-                  music volume ~
-                </label>
+                <label aria-hidden="true">music ~</label>
                 <input
-                  v-model="musicVolume"
-                  name="media-volume"
-                  aria-labelledby="media-volume"
+                  v-model.number="settings.volume.music"
                   type="range"
-                  step="0.1"
+                  step="1"
                   min="0"
-                  max="1"
+                  max="100"
                   style="--track-fill: 30%"
                 />
-                <p id="rangeValue">3</p>
+                <input
+                  v-model="settings.volume.music"
+                  type="number"
+                  min="0"
+                  max="100"
+                  @keydown="validateVolume('music')"
+                  @keyup="validateVolume('music')"
+                />
               </div>
             </div>
 
@@ -130,46 +105,52 @@
                 </svg>
               </picture>
               <div class="input-stack">
-                <label id="media-volume" for="media-volume" aria-hidden="true">
-                  hitsounds volume ~
-                </label>
+                <label aria-hidden="true">hit sounds ~</label>
                 <input
-                  v-model="hitSoundsVolume"
-                  name="media-volume"
-                  aria-labelledby="media-volume"
+                  v-model.number="settings.volume.hitSound"
                   type="range"
+                  step="1"
                   min="0"
-                  step="0.1"
-                  max="1"
+                  max="100"
                   style="--track-fill: 30%"
                 />
-                <p id="rangeValue">3</p>
+                <input
+                  v-model="settings.volume.hitSound"
+                  type="number"
+                  min="0"
+                  max="100"
+                  @keydown="validateVolume('hitSound')"
+                  @keyup="validateVolume('hitSound')"
+                />
               </div>
             </div>
 
             <div class="fieldset-item">
               <picture aria-hidden="true">
-                <svg viewBox="0 0 24 24">
+                <!-- <svg viewBox="0 0 24 24">
                   <path
                     d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
                   ></path>
-                </svg>
+                </svg> -->
               </picture>
               <div class="input-stack">
-                <label id="media-volume" for="media-volume" aria-hidden="true">
-                  scroll speed ~
-                </label>
+                <label aria-hidden="true">scroll speed ~</label>
                 <input
-                  v-model="scrollSpeed"
-                  name="media-volume"
-                  aria-labelledby="media-volume"
+                  v-model.number="settings.game.scrollSpeed"
                   type="range"
                   step="1"
                   min="5"
                   max="40"
                   style="--track-fill: 30%"
                 />
-                <p id="rangeValue">3</p>
+                <input
+                  v-model="settings.game.scrollSpeed"
+                  type="number"
+                  min="5"
+                  max="40"
+                  @keydown="validateScrollSpeed()"
+                  @keyup="validateScrollSpeed()"
+                />
               </div>
             </div>
           </fieldset>
@@ -184,35 +165,38 @@ export default {
   components: {},
   data() {
     return {
-      // username: this.$auth.user.nickname,
       userdata: this.$auth.user,
-      settings: this.$store.state.settings,
+      settings: null,
     };
   },
-  watch: {
-    // volume1(newValue) {
-    //   if (this.volume1 > 100) this.volume1 = 100;
-    //   else if (this.volume1 < 0) this.volume1 = 0;
-    // },
+  created() {
+    this.settings = structuredClone(this.$store.state.settings);
   },
   methods: {
-    async patch() {
-      const getUserId = this.userdata.sub.replace('auth0|', '');
+    async saveSettings() {
+      const t = this;
+
+      // Changes global Howler Volume
+      Howler.volume(t.settings.volume.master / 100);
+
+      // Commit to Vuex Store
+      t.$store.commit('setSettings', structuredClone(t.settings));
+
+      // PATCH to database
+      const getUserId = t.userdata.sub.replace('auth0|', '');
 
       try {
-        const token = await this.$auth.strategy.token.get();
+        const token = await t.$auth.strategy.token.get();
         fetch(`https://usobackend.onrender.com/update/${getUserId}`, {
           method: 'PATCH',
           body: JSON.stringify({
-            username: `${this.username}`,
             volSettings: {
-              master: `${this.masterVolume}`,
-              music: `${this.musicVolume}`,
-              hitSound: `${this.hitSoundsVolume}`,
+              master: `${t.settings.volume.master}`,
+              music: `${t.settings.volume.music}`,
+              hitSound: `${t.settings.volume.hitSound}`,
             },
-
             gameSettings: {
-              scrollSpeed: `${this.scrollSpeed}`,
+              scrollSpeed: `${t.settings.game.scrollSpeed}`,
             },
           }),
           headers: {
@@ -220,18 +204,22 @@ export default {
             Authorization: token,
           },
         });
-        console.log(this.musicVolume);
       } catch (error) {
         console.log(error);
       }
     },
-    saveSettings() {},
-    changeGlobalVol() {
-      Howler.volume(this.masterVolume);
-      console.log(Howler.volume());
+    clamp(num, min, max) {
+      return Math.min(Math.max(num, min), max);
     },
-    log(msg) {
-      console.log(msg);
+    validateVolume(name) {
+      const vol = this.settings.volume;
+      vol[name] = +vol[name].toString().replace(/[^0-9]/g, '');
+      vol[name] = this.clamp(vol[name], 0, 100);
+    },
+    validateScrollSpeed() {
+      const game = this.settings.game;
+      game.scrollSpeed = +game.scrollSpeed.toString().replace(/[^0-9]/g, '');
+      game.scrollSpeed = this.clamp(game.scrollSpeed, 5, 40);
     },
   },
 };
@@ -272,14 +260,13 @@ export default {
 }
 
 .btn:hover {
-  transform: translate(17rem, 16.25rem);
+  transform: translateY(-0.5rem);
   background: #c850cc;
 }
 
 .btn:active {
   transform: scale(0.8);
   background: #14127c;
-  transform: translate(17rem, 16.25rem);
 }
 
 .video-bg {
@@ -403,10 +390,23 @@ input[type='range'] {
   cursor: url('~/assets/images/cursor/paimonCursor4.png'), auto;
 }
 
+input[type='text'],
 input[type='number'] {
   height: 4rem;
   color: black;
   font-size: 5rem;
+}
+
+/* Hide Arrows on Number Input Field */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 #fieldset__user {

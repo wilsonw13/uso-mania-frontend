@@ -29,8 +29,6 @@
 </template>
 
 <script>
-// import NavBar from './NavBar.vue';
-
 /* eslint-disable */
 
 export default {

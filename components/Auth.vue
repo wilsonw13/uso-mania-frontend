@@ -39,12 +39,9 @@ export default {
 
       console.log(userDataFetched);
 
-      t.$store.commit('gameData', userDataFetched);
+      // Commit settingns
 
-      t.$store.commit('setSettings', userDataFetched.volSettings.master);
-      t.$store.commit('setSettings2', userDataFetched.volSettings.music);
-      t.$store.commit('setSettings3', userDataFetched.volSettings.hitSound);
-      t.$store.commit('setSettings4', userDataFetched.gameSettings.scrollSpeed);
+      t.$store.commit('gameData', userDataFetched);
     },
   },
 };
