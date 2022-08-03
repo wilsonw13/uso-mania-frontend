@@ -14,40 +14,40 @@
       ></video>
     </section>
 
-    <button
-      class="btn"
-      @click="
-        patch(),
-          $store.commit('setSettings', masterVolume),
-          $store.commit(
-            'setSettings2',
-
-            musicVolume
-          ),
-          $store.commit(
-            'setSettings3',
-
-            hitSoundsVolume
-          ),
-          $store.commit(
-            'setSettings4',
-
-            scrollSpeed
-          ),
-          $store.commit('setSettings5', username)
-      "
-    >
-      update
-    </button>
 
     <div class="settings__container">
       <h1 id="settings__title">settings.</h1>
       <form class="settings__form">
         <section class="settings__section">
-          <header>
+          <header class="sounds__titles">
             <h2 id="sounds__title">sfx/sounds</h2>
             <h3 id="sounds__subTitle">adjust your volume settings</h3>
           </header>
+           <button
+            class="btn"
+            @click="
+              patch(),
+                $store.commit('setSettings', masterVolume),
+                $store.commit(
+                  'setSettings2',
+
+                  musicVolume
+                ),
+                $store.commit(
+                  'setSettings3',
+
+                  hitSoundsVolume
+                ),
+                $store.commit(
+                  'setSettings4',
+
+                  scrollSpeed
+                ),
+                $store.commit('setSettings5', username)
+            "
+          >
+            update
+          </button>
 
           <fieldset class="settings__field">
             <div id="fieldset__user" class="fieldset-item">
@@ -243,21 +243,22 @@ export default {
   color: #0d0c36;
 }
 
-.settings__page {
+/* .settings__page {
   min-height: 100vh;
   height: 100%;
-}
+} */
 
 .landing {
   width: 100%;
 }
 
 .btn {
+  position: absolute;
   height: 4.5rem;
   width: 11rem;
   font-size: 3rem;
   margin: auto;
-  transform: translate(17rem, 16.75rem);
+
   color: #f0f1ff;
   background-color: #6847dd;
   border-radius: 12px;
@@ -294,6 +295,12 @@ export default {
   text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
 }
 
+.sounds__titles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 #sounds__title {
   font-size: 4.5rem;
   font-weight: 400;
@@ -309,7 +316,7 @@ export default {
 
 .settings__container {
   display: grid;
-  gap: 3rem;
+  gap: 2rem;
   place-content: center;
   padding: 5rem;
 }
@@ -445,9 +452,24 @@ input[type='range'] {
   padding: 0.25rem 0 0 1.25rem;
 }
 
+.settings__container {
+  display: grid;
+  /* gap: 3rem; */
+  place-content: center;
+  padding: 3rem 5rem 2rem 5rem;
+}
+
 @media screen and (max-width: 900px) {
   .under-nav {
       height: 4.25rem;
+  }
+
+  .settings__container {
+    padding: 7rem 5rem 1rem 5rem;
+  }
+
+  .video-bg {
+    height: calc(100vh - 4.25rem);
   }
 }
 
