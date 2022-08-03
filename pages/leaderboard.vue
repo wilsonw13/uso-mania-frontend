@@ -144,7 +144,7 @@ export default {
 
 .lb__titlebox {
   width: 55vw;
-  margin-top: 2rem;
+  margin-top: 4rem;
   background-color: rgb(8, 36, 83);
 }
 
@@ -215,7 +215,7 @@ tbody {
     url('~/assets/images/backgrounds/fleeting-colors.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 1rem;
+  margin-bottom: 6rem;
   /* background-position: center center; */
 }
 
@@ -287,4 +287,47 @@ tbody {
     height: 4.25rem;
   }
 }
+
+@media screen and (max-width: 1300px) {
+  .lb__titlebox {
+    width: 65vw;
+  }
+
+  .yae__filler {
+    width: 65vw;
+  }
+
+  .lb__rankingStats {
+    --content-width: 65vw;
+  }
+}
+
+@media screen and (max-width: 1075px) {
+    .lb__titlebox {
+      width: 70vw;
+    }
+
+    .yae__filler {
+      width: 70vw;
+    }
+
+    .lb__rankingStats {
+      --content-width: 70vw;
+  }
+}
+
+@media screen and (max-width: 1075px) {
+    .lb__titlebox {
+      width: 90vw;
+    }
+
+    .yae__filler {
+      width: 90vw;
+    }
+
+    .lb__rankingStats {
+      --content-width: 90vw;
+  }
+}
+
 </style>

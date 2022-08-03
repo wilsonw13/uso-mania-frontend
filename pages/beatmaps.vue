@@ -446,7 +446,7 @@ export default {
 }
 
 .play-title-textbox {
-  margin-top: 2rem;
+  margin-top: 3.5rem;
   background-color: rgb(42, 36, 75);
 }
 
