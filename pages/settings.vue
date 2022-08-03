@@ -50,7 +50,7 @@
           </header>
 
           <fieldset class="settings__field">
-            <div id="fieldset__user" class="fieldset-item">
+            <!-- <div id="fieldset__user" class="fieldset-item">
               <div class="username-container">
                 <h1 class="username">ktestusername</h1>
                 <form class="user-form">
@@ -61,7 +61,7 @@
                   />
                 </form>
               </div>
-            </div>
+            </div> -->
 
             <div class="fieldset-item">
               <picture aria-hidden="true">
@@ -76,17 +76,22 @@
                   master volume ~
                 </label>
                 <input
-                  v-model="masterVolume"
+                  v-model.number="settings.volume.master"
                   name="media-volume"
                   aria-labelledby="media-volume"
                   type="range"
-                  step="0.1"
+                  step="0.01"
                   min="0"
                   max="1"
                   style="--track-fill: 30%"
-                  @change="changeGlobalVol()"
                 />
-                <p id="rangeValue">3</p>
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  :value="(settings.volume.master * 100).toFixed(0)"
+                  @change="log($event.target._value)"
+                />
               </div>
             </div>
 
@@ -160,8 +165,8 @@
                   aria-labelledby="media-volume"
                   type="range"
                   step="1"
-                  min="10"
-                  max="30"
+                  min="5"
+                  max="40"
                   style="--track-fill: 30%"
                 />
                 <p id="rangeValue">3</p>
@@ -181,11 +186,7 @@ export default {
     return {
       // username: this.$auth.user.nickname,
       userdata: this.$auth.user,
-      masterVolume: this.$store.state.userSettings.masterVolume,
-      musicVolume: this.$store.state.userSettings.musicVolume,
-      hitSoundsVolume: this.$store.state.userSettings.hitSoundsVolume,
-      scrollSpeed: this.$store.state.userSettings.scrollSpeed,
-      username: this.$store.state.username,
+      settings: this.$store.state.settings,
     };
   },
   watch: {
@@ -224,9 +225,13 @@ export default {
         console.log(error);
       }
     },
+    saveSettings() {},
     changeGlobalVol() {
       Howler.volume(this.masterVolume);
       console.log(Howler.volume());
+    },
+    log(msg) {
+      console.log(msg);
     },
   },
 };
@@ -391,8 +396,8 @@ input[type='range'] {
   cursor: url('~/assets/images/cursor/paimonCursor4.png'), auto;
 }
 
-.ryanisgoodatvideogames {
-  height: 10rem;
+input[type='number'] {
+  height: 4rem;
   color: black;
   font-size: 5rem;
 }
@@ -447,8 +452,7 @@ input[type='range'] {
 
 @media screen and (max-width: 900px) {
   .under-nav {
-      height: 4.25rem;
+    height: 4.25rem;
   }
 }
-
 </style>

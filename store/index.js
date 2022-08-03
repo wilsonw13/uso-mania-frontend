@@ -1,10 +1,15 @@
 export const state = () => ({
   user: null,
-  userSettings: {
-    masterVolume: 0.5,
-    musicVolume: 0.5,
-    hitSoundsVolume: 0.5,
-    scrollSpeed: 10,
+  settings: {
+    volume: {
+      master: 1,
+      music: 0.5,
+      hitSounds: 0.5,
+    },
+    game: {
+      keys: [],
+      scrollSpeed: 10,
+    },
     username: '',
   },
   // gameData: {
