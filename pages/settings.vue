@@ -14,7 +14,6 @@
       ></video>
     </section>
 
-
     <div class="settings__container">
       <h1 id="settings__title">settings.</h1>
       <form class="settings__form">
@@ -23,7 +22,7 @@
             <h2 id="sounds__title">sfx/sounds</h2>
             <h3 id="sounds__subTitle">adjust your volume settings</h3>
           </header>
-           <button
+          <button
             class="btn"
             @click="
               patch(),
@@ -461,7 +460,7 @@ input[type='range'] {
 
 @media screen and (max-width: 900px) {
   .under-nav {
-      height: 4.25rem;
+    height: 4.25rem;
   }
 
   .settings__container {
@@ -472,5 +471,4 @@ input[type='range'] {
     height: calc(100vh - 4.25rem);
   }
 }
-
 </style>

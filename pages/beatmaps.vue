@@ -173,6 +173,7 @@
 </template>
 
 <script>
+import { Howler } from 'howler';
 export default {
   auth: false,
 
@@ -230,6 +231,8 @@ export default {
   },
 
   mounted() {
+    Howler.volume(0.005);
+
     this.progressAudioBar = new ProgressBar.Line('#audioProgress', {
       strokeWidth: 5,
       color: '#8C9EFF',
@@ -350,7 +353,7 @@ export default {
       if (this.muted) {
         Howler.volume(0);
       } else {
-        Howler.volume(1);
+        Howler.volume(0.005);
       }
     },
   },

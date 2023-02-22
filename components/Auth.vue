@@ -37,7 +37,7 @@ export default {
       );
       const userDataFetched = await userDataFetch.json();
 
-      console.log(userDataFetched);
+      // console.log(userDataFetched);
 
       t.$store.commit('gameData', userDataFetched);
 
