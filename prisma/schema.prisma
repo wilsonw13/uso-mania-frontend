@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  userId    String   @id
+  createdAt DateTime @default(now())
+
+  username    String @unique @db.VarChar(20)
+  pfpId       Int    @default(0)
+  description String @default("")
+  characters  String @default("[]")
+
+  settings          UserSettings?
+  stats             UserStats?
+  UserPlayedBeatmap UserPlayedBeatmap[]
+}
+
+model UserSettings {
+  userId String @id
+  user   User?  @relation(fields: [userId], references: [userId])
+
+  volumeMaster   Float @default(1)
+  volumeMusic    Float @default(0.5)
+  volumeHitSound Float @default(0.5)
+
+  scrollSpeed Int @default(10)
+
+  keys1 String @default(" ") @db.VarChar(1)
+  keys2 String @default("FJ") @db.VarChar(2)
+  keys3 String @default("F J") @db.VarChar(3)
+  keys4 String @default("DFJK") @db.VarChar(4)
+  keys5 String @default("DF JK") @db.VarChar(5)
+  keys6 String @default("SDFJKL") @db.VarChar(6)
+  keys7 String @default("SDF JKL") @db.VarChar(7)
+  keys8 String @default("ASDFJKL;") @db.VarChar(8)
+  keys9 String @default("ASDF JKL;") @db.VarChar(9)
+
+  @@index([userId])
+}
+
+model UserStats {
+  userId String @id
+  user   User   @relation(fields: [userId], references: [userId])
+
+  averageScore    Int   @default(0)
+  averageAccuracy Float @default(0)
+  highestMaxCombo Float @default(0)
+  playCountUnique Int   @default(0)
+
+  SS Int @default(0)
+  S  Int @default(0)
+  A  Int @default(0)
+  B  Int @default(0)
+  C  Int @default(0)
+  D  Int @default(0)
+
+  @@index([userId])
+}
+
+model UserPlayedBeatmap {
+  user User @relation(fields: [userId], references: [userId])
+
+  userId       String
+  beatmapSetId Int
+  beatmapId    Int
+
+  highestScore    Int
+  highestAccuracy Float
+  highestMaxCombo Int
+  highestGrade    String @db.VarChar(2)
+  playCount       Int
+
+  entries UserScoreEntry[]
+
+  @@id([userId, beatmapSetId, beatmapId])
+  @@index([userId])
+}
+
+model UserScoreEntry {
+  id Int @id @default(autoincrement())
+
+  beatmap UserPlayedBeatmap @relation(fields: [userId, beatmapSetId, beatmapId], references: [userId, beatmapSetId, beatmapId])
+
+  userId       String
+  beatmapSetId Int
+  beatmapId    Int
+
+  score    Int
+  accuracy Float
+  maxCombo Int
+  grade    String @db.VarChar(2)
+
+  @@index([userId, beatmapSetId, beatmapId])
+}

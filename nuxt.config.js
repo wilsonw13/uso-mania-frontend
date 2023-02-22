@@ -1,6 +1,5 @@
 export default {
   ssr: false,
-
   components: true,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -74,6 +73,8 @@ export default {
       },
     },
   },
+
+  serverMiddleware: ['~/api/index.ts'],
 
   router: {
     middleware: ['auth'],

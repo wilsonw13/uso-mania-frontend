@@ -16,7 +16,7 @@
 <script>
 window.onload = () => {
   setTimeout(() => {
-    document.querySelector('body').classList.add('display');
+    document.querySelector("body").classList.add("display");
   }, 10000);
 };
 </script>
@@ -78,7 +78,7 @@ window.onload = () => {
 }
 
 .circles div::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0.875rem;
   height: 0.875rem;

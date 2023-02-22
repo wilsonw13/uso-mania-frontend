@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "lib": [
+      "ES2022"
+    ],
+    "esModuleInterop": true,
+    "useUnknownInCatchVariables": false,
+  },
+  "exclude": [
+    "node_modules",
+  ],
+  "include": [
+    "api/**/*",
+  ],
+}
