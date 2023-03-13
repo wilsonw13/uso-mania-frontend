@@ -1,12 +1,30 @@
-# uso
+<div align="center">
 
-## Build Setup
+# uso!mania
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/635bea7d-9ac4-4ddf-a718-6b96e40d06a4/deploy-status)](https://app.netlify.com/sites/uso-mania/deploys)
+
+[Front-End Repository](https://github.com/wilsonw13/uso-mania-frontend) • [Back-End Repository](https://github.com/wilsonw13/uso-mania-backend) • [Hosted Link](https://uso-mania.netlify.app/)
+
+</div>
+
+## About
+
+uso!mania is a full-stack web application rhythm game similar to that of the [Guitar Hero series](https://en.wikipedia.org/wiki/Guitar_Hero), [Piano Tiles](https://en.wikipedia.org/wiki/Piano_Tiles), and of course [osu!mania](https://osu.ppy.sh/home) itself, the game in which we primarily drew our inspiration from. 
+
+The front-end is built on the NuxtJS framework using PixiJS as our graphics engine and is hosted on Netlify.
+
+The back-end is an ExpressJS server connected to a MongoDB Atlas database hosted on Render. We have future plans to swap to Python Flask server connected to a MySQL database with Prisma.
+
+## Local Installation
+
+### Install front-end NuxtJS server:
 
 ```bash
 # install dependencies
 $ npm install
 
-# serve with hot reload at localhost:3000
+# serve with hot reload at localhost:8080
 $ npm run dev
 
 # build for production and launch server
@@ -17,52 +35,53 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+For detailed explanation on how things work, check out the [NuxtJS documentation](https://nuxtjs.org).
 
-## Special Directories
+### Install back-end ExpressJS server:
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+Create `.env` file with the following variable:
 
-### `assets`
+```
+DATABASE='<YOUR_DATABASE_URL_HERE>'
+```
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+```bash
+# install dependencies
+$ npm install
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+# serve with hot reload at localhost:8000
+$ npm run dev
 
-### `components`
+# serve statically
+$ npm run start
+```
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+## Libraries/Frameworks Used
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+* [Auth0](https://auth0.com/): authentication service
+* [Express](https://expressjs.com/): back-end server
+* [Fort Awesome](https://fortawesome.com/): icons
+* [Howler](https://howlerjs.com/): JavaScript sound library
+* [MongoDB Atlas](https://www.mongodb.com/atlas/database): document database service
+* [Nuxt 2](https://nuxtjs.org/): front-end framework
+* [Pixi](https://pixijs.com/): JavaScript graphics library
 
-### `layouts`
+## Authors
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+[Wilson W](https://github.com/wilsonw13): Project Lead and Front-end Developer
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+[Harvey J](https://github.com/harveyj123): Front-end and Back-end Developer
 
-### `pages`
+[Kenny T](https://github.com/kentng01): Front-end Developer
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+[Ethan L](https://github.com/ethanl66): Front-end Developer
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+[Ryan S](https://github.com/ryan-sliger): Back-end Developer
 
-### `plugins`
+## Contributing
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
+You are more than welcome to fork our repository to continue expanding this project since we have mostly stopped development.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
+## License
 
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+The code to uso!mania is licensed under the [MIT License](LICENCE).
