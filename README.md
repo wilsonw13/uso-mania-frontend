@@ -39,7 +39,7 @@ For detailed explanation on how things work, check out the [NuxtJS documentation
 
 ### Install back-end ExpressJS server:
 
-Create `.env` file with the following variable:
+Create `.env` file with the following variables:
 
 ```
 DATABASE='<YOUR_DATABASE_URL_HERE>'
