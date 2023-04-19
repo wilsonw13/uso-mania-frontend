@@ -64,8 +64,8 @@ export default {
       auth0: {
         domain: 'dev-2szf794g.us.auth0.com',
         clientId: '0oJ0TBUYNgtTWAvBOxvxEW955Xy99Ld1',
-        logoutRedirectUri: 'http://localhost:8080/home',
-        redirect_uri: 'http://localhost:8080/home',
+        logoutRedirectUri: '/home',
+        redirect_uri: '/home',
         audience: 'http://localhost:6000',
         scope: ['openid', 'profile', 'email', 'offline_access'],
         responseType: 'code',
