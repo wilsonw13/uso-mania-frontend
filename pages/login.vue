@@ -1,12 +1,12 @@
 <script>
 export default {
-  created() {
-    this.login();
-  },
+  // created() {
+  //   this.login();
+  // },
   methods: {
-    async login() {
-      await this.$auth.loginWith('auth0');
-    },
+    // async login() {
+    //   await this.$auth.loginWith('auth0');
+    // },
   },
 };
 </script>
