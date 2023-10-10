@@ -227,7 +227,7 @@ export default {
   },
 
   mounted() {
-    Howler.volume(0.005);
+    Howler.volume(0.8);
 
     this.progressAudioBar = new ProgressBar.Line('#audioProgress', {
       strokeWidth: 5,
@@ -257,7 +257,7 @@ export default {
             t.bmSetsData[t.clickedBmSetName][0].general.AudioFilename
           }`,
         ],
-        volume: 0.5,
+        volume: 0.8,
         preload: true,
         html5: true,
       });
@@ -349,7 +349,7 @@ export default {
       if (this.muted) {
         Howler.volume(0);
       } else {
-        Howler.volume(0.005);
+        Howler.volume(0.8);
       }
     },
   },

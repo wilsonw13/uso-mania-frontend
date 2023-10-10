@@ -125,7 +125,7 @@ export default {
       noteHitSound: null,
       music: null,
       songDuration: 0,
-      volume: 8,
+      volume: 1,
       pbVolProgress: 1,
       scale: 0,
       opacity: 1,
@@ -370,7 +370,7 @@ export default {
         src: [
           `/beatmaps/${this.beatmapData.metadata.BeatmapSetID}/${this.beatmapData.general.AudioFilename}`,
         ],
-        volume: 0.5, // this.$store.state.userSettings.musicVolume,
+        volume: 1, // this.$store.state.userSettings.musicVolume,
         preload: 'metadata',
         onload: () => (this.songLoaded = true),
       });
