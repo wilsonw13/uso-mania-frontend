@@ -55,28 +55,8 @@ export default {
     '@nuxtjs/auth-next',
   ],
 
-  auth: {
-    redirect: {
-      login: '/login', // redirect user when not connected
-      callback: '/beatmaps',
-    },
-    strategies: {
-      auth0: {
-        domain: 'dev-2szf794g.us.auth0.com',
-        clientId: '0oJ0TBUYNgtTWAvBOxvxEW955Xy99Ld1',
-        logoutRedirectUri: '/home',
-        redirect_uri: '/home',
-        audience: 'http://localhost:6000',
-        scope: ['openid', 'profile', 'email', 'offline_access'],
-        responseType: 'code',
-        grantType: 'authorization_code',
-        codeChallengeMethod: 'S256',
-      },
-    },
-  },
-
   router: {
-    middleware: ['auth'],
+
   },
 
   server: {

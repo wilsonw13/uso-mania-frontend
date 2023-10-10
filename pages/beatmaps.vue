@@ -202,10 +202,6 @@ export default {
     };
   },
 
-  async login() {
-    await this.$auth.loginWith('auth0');
-  },
-
   async fetch() {
     const t = this;
 
