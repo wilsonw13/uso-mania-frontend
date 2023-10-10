@@ -1,9 +1,9 @@
 export const state = () => ({
   user: null,
   userSettings: {
-    masterVolume: 0.5,
-    musicVolume: 0.5,
-    hitSoundsVolume: 0.5,
+    masterVolume: 8,
+    musicVolume: 8,
+    hitSoundsVolume: 2,
     scrollSpeed: 10,
     username: '',
   },

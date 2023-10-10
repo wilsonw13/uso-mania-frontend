@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <MobileError />
-
+ 
     <NavBar />
     <div class="under-nav"></div>
     <Nuxt />
