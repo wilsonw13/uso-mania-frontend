@@ -2,7 +2,7 @@
   <div style="display: none"></div>
 </template>
 
-<script>
+<!-- <script>
 export default {
   data() {
     return {
@@ -48,6 +48,6 @@ export default {
     },
   },
 };
-</script>
+</script> -->
 
 <style></style>
