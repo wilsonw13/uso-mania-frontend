@@ -125,7 +125,7 @@ export default {
       noteHitSound: null,
       music: null,
       songDuration: 0,
-      volume: 0.1,
+      volume: 8,
       pbVolProgress: 1,
       scale: 0,
       opacity: 1,
